@@ -201,7 +201,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     var seq = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'];
     var play = ['A\u2660', '2', '3', '5', '8', '\u2654'];
     var tshirt = ['XL', 'L', 'M', 'S', 'XS', '?'];
-    var times    = ['4h', '8h', '12h', '24h', '32h', '40h', '8d', '10d', '15d', '20d', '?', '\u2615'];
+    var times    = ['4h', '8h', '16', '24h', '40h', '7d', '10d', '15d', '20d', '?', '\u2615'];
     switch (val) {
     case ('fib'):
       return fib;
