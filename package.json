@@ -7,7 +7,7 @@
     "www.hatchetapp.net"
   ],
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   },
   "engines": {
     "node": "12.x"
