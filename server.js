@@ -4,7 +4,7 @@
  */
 var _ = require('underscore')._;
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 
 var express = require('express'),
     fs = require('fs');
