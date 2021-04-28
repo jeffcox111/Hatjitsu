@@ -260,6 +260,16 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
 
   };
 
+  var setAverageVisibility = function(visibility){
+    if(visibility == true){
+      $scope.votingAverageState = 'voting-average-hidden';
+    }
+    else {
+      $scope.votingAverageState = 'voting-average';
+    }
+    
+  }
+
   $scope.configureRoom = function () {
 
     socket.on('room joined', function () {
@@ -396,6 +406,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
 
   $scope.toggleVoter = function () {
     // console.log("emit toggle voter", { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId });
+    setAverageVisibility($scope.voter);
     socket.emit('toggle voter', { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId }, function (response) {
       processMessage(response);
     });
@@ -418,6 +429,9 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
 
   $scope.dropDown = new DropDown('#dd');
   $scope.votingAverage = 0;
+
+  $scope.votingAverageState = 'voting-average-hidden';
+
 }
 
 RoomCtrl.$inject = ['$scope', '$routeParams', '$timeout', 'socket'];
