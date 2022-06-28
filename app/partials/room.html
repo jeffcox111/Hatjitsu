@@ -5,6 +5,9 @@
     <div class="row cardPanel-meta">
       <div class="span2 subheading">
         <div ng-show="voter">
+          <div>
+            <span>Card pack: {{getCardPack()}}</span>
+          </div>
           <span>Choose your estimate...</span>
         </div>
         <div ng-hide="voter">

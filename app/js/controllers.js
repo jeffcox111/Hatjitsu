@@ -366,6 +366,27 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     socket.emit('set card pack', { roomUrl: $scope.roomId, cardPack: cardPack });
   };
 
+  $scope.getCardPack = function(){
+    switch (this.cardPack) {
+      case ('fib'):
+        return "Fibonacci";
+      case ('goat'):
+        return "Mountain Goat (Scrum Standard)";
+      case ('seq'):
+        return "Sequential";
+      case ('play'):
+        return "Playing Cards";
+      case ('tshirt'):
+        return "T-Shirt Sizes";
+      case ('times'):
+        return "Transnetyx Time";
+      case ('court'):
+        return "Supreme Court";
+      default:
+        return [];
+      }
+  }
+
   $scope.vote = function (vote) {
     if ($scope.myVote !== vote) {
       if (!votingFinished() && $scope.voter) {
@@ -434,6 +455,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
   $scope.votingAverage = 0;
 
   $scope.votingAverageState = 'voting-average-hidden';
+ 
 
 }
 
