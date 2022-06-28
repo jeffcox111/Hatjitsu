@@ -202,6 +202,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     var play = ['A\u2660', '2', '3', '5', '8', '\u2654'];
     var tshirt = ['XL', 'L', 'M', 'S', 'XS', '?'];
     var times    = ['1/2d', '1d', '2d', '3d', '5d', '7d', '10d', '15d', '20d', '?', '\u2615'];
+    var court = ['1'];
     switch (val) {
     case ('fib'):
       return fib;
@@ -215,6 +216,8 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
       return tshirt;
     case ('times'):
       return times;
+    case ('court'):
+      return court;
     default:
       return [];
     }
