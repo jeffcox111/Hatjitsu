@@ -378,8 +378,6 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
         return "Playing Cards";
       case ('tshirt'):
         return "T-Shirt Sizes";
-      case ('times'):
-        return "Transnetyx Time";
       case ('court'):
         return "Supreme Court";
       default:
