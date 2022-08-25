@@ -4,7 +4,7 @@
  */
 var _ = require('underscore')._;
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 
 var express = require('express'),
     fs = require('fs');
@@ -41,7 +41,7 @@ var options = {
 };
 
 // Initialize the CDN magic
-var CDN = require('express-cdn')(app, options);
+//var CDN = require('express-cdn')(app, options);
 
 app.configure(function(){
   app.set('views', __dirname + '/app');
@@ -63,12 +63,12 @@ app.configure('development', function(){
 app.configure('production', function(){
   var oneDay = 86400000;
   // app.use(assetsManagerMiddleware);
-  app.use(gzippo.staticGzip(__dirname + '/app'));
+  app.use(express.static(__dirname + '/app'));
   app.use(express.errorHandler());
 });
 
 // Add the dynamic view helper
-app.dynamicHelpers({ CDN: CDN });
+//app.dynamicHelpers({ CDN: CDN });
 
 app.get('/', function(req, res) {
   res.render('index.ejs');
@@ -114,7 +114,7 @@ io.configure('development', function(){
   io.set('log level', 2);
 });
 
-var port = process.env.app_port || 5000; // Use the port that Heroku provides or default to 5000
+var port = process.env.PORT || 5000; // Use the port that Heroku provides or default to 5000
 app.listen(port, function() {
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

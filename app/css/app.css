@@ -166,7 +166,7 @@ a:focus {
     position: relative;
     border: 1px solid #b9aaa7;
     border-width: 0 1px;
-  }
+   }
 
 /*
 
@@ -891,4 +891,13 @@ a:focus {
     bottom: 33px;
     right: 0;
     z-index: 2;
+  }
+
+  
+  .voting-average{
+    visibility: visible;
+  }
+
+  .voting-average-hidden{
+    visibility: hidden;
   }

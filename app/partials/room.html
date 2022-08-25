@@ -5,6 +5,9 @@
     <div class="row cardPanel-meta">
       <div class="span2 subheading">
         <div ng-show="voter">
+          <div>
+            <span>Card pack: {{getCardPack()}}</span>
+          </div>
           <span>Choose your estimate...</span>
         </div>
         <div ng-hide="voter">
@@ -21,7 +24,7 @@
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckSeq" ng-click="setCardPack('seq')">Sequential</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckPlay" ng-click="setCardPack('play')">Playing Cards</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckShirt" ng-click="setCardPack('tshirt')">T-Shirt</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckTimes" ng-click="setCardPack('times')">Transnetyx Time</a></li>
+                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckTimes" ng-click="setCardPack('court')">Supreme Court</a></li>
               </ul>
             </div>
         </div>
@@ -73,7 +76,7 @@
         &nbsp;
       </div>
 
-      <div class="voting-average">Average: <b>{{votingAverage}} (SD = {{votingStandardDeviation}})</b></div>
+      <div class="{{votingAverageState}}">Average: <b>{{votingAverage}} (SD = {{votingStandardDeviation}})</b></div>
     </div>
 
     <div ng-switch on="showAdmin" >

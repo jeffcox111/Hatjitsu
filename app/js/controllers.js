@@ -202,6 +202,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     var play = ['A\u2660', '2', '3', '5', '8', '\u2654'];
     var tshirt = ['XL', 'L', 'M', 'S', 'XS', '?'];
     var times    = ['1/2d', '1d', '2d', '3d', '5d', '7d', '10d', '15d', '20d', '?', '\u2615'];
+    var court = ['1'];
     switch (val) {
     case ('fib'):
       return fib;
@@ -215,6 +216,8 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
       return tshirt;
     case ('times'):
       return times;
+    case ('court'):
+      return court;
     default:
       return [];
     }
@@ -259,6 +262,16 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     }, 100);
 
   };
+
+  var setAverageVisibility = function(visibility){
+    if(visibility == true){
+      $scope.votingAverageState = 'voting-average-hidden';
+    }
+    else {
+      $scope.votingAverageState = 'voting-average';
+    }
+    
+  }
 
   $scope.configureRoom = function () {
 
@@ -353,6 +366,25 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
     socket.emit('set card pack', { roomUrl: $scope.roomId, cardPack: cardPack });
   };
 
+  $scope.getCardPack = function(){
+    switch (this.cardPack) {
+      case ('fib'):
+        return "Fibonacci";
+      case ('goat'):
+        return "Mountain Goat (Scrum Standard)";
+      case ('seq'):
+        return "Sequential";
+      case ('play'):
+        return "Playing Cards";
+      case ('tshirt'):
+        return "T-Shirt Sizes";
+      case ('court'):
+        return "Supreme Court";
+      default:
+        return [];
+      }
+  }
+
   $scope.vote = function (vote) {
     if ($scope.myVote !== vote) {
       if (!votingFinished() && $scope.voter) {
@@ -396,6 +428,7 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
 
   $scope.toggleVoter = function () {
     // console.log("emit toggle voter", { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId });
+    setAverageVisibility($scope.voter);
     socket.emit('toggle voter', { roomUrl: $scope.roomId, voter: $scope.voter, sessionId: $scope.sessionId }, function (response) {
       processMessage(response);
     });
@@ -418,6 +451,10 @@ function RoomCtrl($scope, $routeParams, $timeout, socket) {
 
   $scope.dropDown = new DropDown('#dd');
   $scope.votingAverage = 0;
+
+  $scope.votingAverageState = 'voting-average-hidden';
+ 
+
 }
 
 RoomCtrl.$inject = ['$scope', '$routeParams', '$timeout', 'socket'];
