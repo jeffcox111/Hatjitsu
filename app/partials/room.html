@@ -24,7 +24,6 @@
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckSeq" ng-click="setCardPack('seq')">Sequential</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckPlay" ng-click="setCardPack('play')">Playing Cards</a></li>
                 <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckShirt" ng-click="setCardPack('tshirt')">T-Shirt</a></li>
-                <li class="dropdown__item"><a href="#" ng-model="cardPack" id="deckTimes" ng-click="setCardPack('court')">Supreme Court</a></li>
               </ul>
             </div>
         </div>
@@ -48,7 +47,7 @@
 
     <div class="switch">
       <input type="checkbox" ng-model="voter" ng-disabled="forceRevealDisable" ng-change="toggleVoter()">
-      <label class="btn" data-on="You are a voter" data-off="You are not a voter">I am voting</label>
+      <label class="btn" data-on="I don't want to vote" data-off="I want to vote">I am voting</label>
     </div>
 
     <div ng-switch on="voter">
